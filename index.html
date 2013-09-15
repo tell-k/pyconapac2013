@@ -1,1 +1,890 @@
-My GitHub Page
+<!DOCTYPE html>
+
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sphinx and ME &mdash; Pycon APAC 2013  documentation</title>
+
+    
+
+    
+<link rel="stylesheet" href="_static/css/reveal.min.css">
+<link rel="stylesheet" href="_static/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="_static/lib/css/zenburn.css">
+<link rel="stylesheet" href="_static/revealjs.css" type="text/css" />
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write('<link rel="stylesheet" href="_static/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="_static/lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+  <div class="section" id="sphinx-and-me">
+<h1>Sphinx and ME<a class="headerlink" href="#sphinx-and-me" title="Permalink to this headline">¶</a></h1>
+<section>
+<h2>Sphinx と 僕</h2>
+<h5>〜 Sphinxと戯れたいあなたに送る入門編 〜</h5>
+<small class="first last">
+PyCon Apac 2013.</small>
+</section>
+<section>
+<h2>Who are you?</h2>
+<a class="first reference internal image-reference" href="_images/tell-k.png"><img alt="_images/tell-k.png" src="_images/tell-k.png" style="width: 200px;" /></a>
+<div class="last"><ul>
+<li class="fragment">名前: tell-k(Teruhiko Kida)</li>
+<li class="fragment">所属: <a href="http://www.beproud.jp/">Beproud.inc</a></li>
+<li class="fragment">Twitter: <a href="https://twitter.com/tell_k">@tell_k</a></li>
+<li class="fragment">Github: <a href="https://github.com/tell-k">https://github.com/tell-k</a></li>
+<li class="fragment">Sphinx Theme<br />
+<ul>
+  <li><a href="https://github.com/tell-k/sphinxjp.themes.basicstrap">sphinxjp.themes.basicstrap</a></li>
+  <li><a href="https://github.com/tell-k/sphinxjp.themes.revealjs">sphinxjp.themes.revealjs</a></li>
+</ul>
+</li>
+</ul></div></section>
+<section>
+<h2>対象者</h2>
+<div class="first last"><ol>
+<li class="fragment">Pythonはなんとなく知ってる人</li>
+<li class="fragment">Sphinxとか知らない人</li>
+<li class="fragment">Sphinxを使い始めようかと思ってる人</li>
+<li class="fragment">Wikiとか書くのに飽きた人</li>
+<li class="fragment">宗教上の理由でExcelとかWordが使えない人</li>
+</ol></div></section>
+<section>
+<h2>目次</h2>
+<ul class="first last simple">
+<li>Sphinx概要</li>
+<li>HTMLテーマを変える</li>
+<li>中身と拡張の話</li>
+<li>ドキュメント作成が捗る</li>
+<li>参考</li>
+<li>まとめ</li>
+</ul>
+</section>
+<section>
+<h2>Sphinx概要</h2>
+<ul class="first last simple">
+<li>Sphinxとは</li>
+<li>はじめてみる</li>
+<li>ReStrucutedText</li>
+<li>いろいろなアウトプット</li>
+</ul>
+</section>
+<section>
+<h2>Sphinxとは</h2>
+<div class="first last figure">
+<img alt="_images/sphinxorg.png" src="_images/sphinxorg.png" />
+<p class="caption"><a class="reference external" href="http://sphinx-doc.org/">http://sphinx-doc.org/</a></p>
+</div>
+</section>
+<section>
+Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.</section>
+<section>
+Sphinxは知的で美しいドキュメントを簡単に作成！</section>
+<section>
+<div class="first last figure">
+<img alt="_images/pocoo.png" src="_images/pocoo.png" />
+<p class="caption"><a class="reference external" href="http://www.pocoo.org/">http://www.pocoo.org/</a></p>
+</div>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/pocoo_team.png" src="_images/pocoo_team.png" />
+<p class="caption"><a class="reference external" href="http://www.pocoo.org/team/">http://www.pocoo.org/team/</a></p>
+</div>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/pyconapac.png" src="_images/pyconapac.png" />
+</div>
+</section>
+<section>
+<h2>はじめてみる</h2>
+<pre class="first last">
+<code data-trim contenteditable>$ virtualenv --distribute env
+$ source env/bin activate
+
+$ mkdir sample-doc
+$ cd sample-doc
+
+$ pip install Sphinx
+$ sphinx-quickstart
+
+# 対話形式でSphinxのプロジェクト設定を行う
+
+$ make html</code></pre>
+</section>
+<section>
+<h2>はじめてみる</h2>
+<div class="first last figure">
+<img alt="_images/sampledoc.png" src="_images/sampledoc.png" />
+<p class="caption">sample docment</p>
+</div>
+</section>
+<section>
+<h2>初期構成</h2>
+<pre class="first last">
+<code data-trim contenteditable>./
+ ├── Makefile
+ ├── _build
+ ├── _static
+ ├── _templates
+ ├── conf.py
+ ├── index.rst
+ └── make.bat</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/reST.png" src="_images/reST.png" />
+</div>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>.. sample documentation master file, created by
+   sphinx-quickstart on Tue Sep 10 18:28:57 2013.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to sample's documentation!
+==================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`</code></pre>
+</section>
+<section>
+<h3>いろんなアウトプット</h3>
+<p class="first">pdf,
+latex,
+epub,
+..etc</p>
+<img alt="_images/sphinximage.png" class="last" src="_images/sphinximage.png" />
+</section>
+<section>
+<pre class="first">
+<code data-trim contenteditable>$ make latexpdf</code></pre>
+<div class="last figure">
+<img alt="_images/pdfimage.png" src="_images/pdfimage.png" />
+</div>
+</section>
+<section>
+<h2>HTMLテーマを変えてみる</h2>
+<ul class="first last simple">
+<li>標準テーマ</li>
+<li>CSSを変更する</li>
+<li>外部テーマ利用</li>
+<li>HTMLテーマの中身</li>
+</ul>
+</section>
+<section>
+<h2>標準テーマ</h2>
+<ul class="first last simple">
+<li>agogo</li>
+<li>basic</li>
+<li>default</li>
+<li>haiku</li>
+<li>nature</li>
+<li>pyramid</li>
+<li>scrolls</li>
+<li>sphinxdoc</li>
+<li>traditional</li>
+</ul>
+</section>
+<section>
+<p class="first">conf.py</p>
+<pre>
+<code data-trim contenteditable># The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+html_theme = 'nature'</code></pre>
+<p>build</p>
+<pre class="last">
+<code data-trim contenteditable>$ make html</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/nature_theme.png" src="_images/nature_theme.png" />
+</div>
+</section>
+<section>
+<h2>CSSを変える</h2>
+<p class="first">_stacic/override_nature.css</p>
+<pre>
+<code data-trim contenteditable>@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+div.body {
+    font-family: Ubuntu, Arial, sans-serif;
+    background-color: #dcd8d6;
+}
+div.related {
+    background-color: #e46d3d;
+}
+div.body h1 {
+    border-top: 20px solid #dcd8d6;
+}
+div.body h1, div.body h2, div.body h3, div.body h4, div.body h5, div.body h6 {
+    font-family: Ubuntu, Arial, sans-serif;
+    background-color: #c1b3ad;
+}</code></pre>
+<p>conf.py</p>
+<pre class="last">
+<code data-trim contenteditable>def setup(app):
+    app.add_stylesheet('override_nature.css')</code></pre>
+</section>
+<section>
+<img alt="_images/override_nature.png" class="first last" src="_images/override_nature.png" />
+</section>
+<section>
+<h2>JSも追加可能</h2>
+<p class="first">conf.py</p>
+<pre class="last">
+<code data-trim contenteditable>def setup(app):
+    app.add_javascript('other.js')</code></pre>
+</section>
+<section>
+<h2>外部テーマ利用</h2>
+<div class="first last figure">
+<img alt="_images/flask_github.png" src="_images/flask_github.png" />
+</div>
+</section>
+<section>
+<p class="first">save theme files to local</p>
+<pre>
+<code data-trim contenteditable>_theme/flask</code></pre>
+<p>conf.py</p>
+<pre class="last">
+<code data-trim contenteditable>sys.path.append(os.path.abspath('_theme'))
+html_theme_path = ['_theme']
+html_theme = 'flask'</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/flask_theme.png" src="_images/flask_theme.png" />
+</div>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/sphinxjp_themecore.png" src="_images/sphinxjp_themecore.png" />
+<p class="caption">sphinxjp.themecore 0.1.3</p>
+</div>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/sphinxjp_themes_list.png" src="_images/sphinxjp_themes_list.png" />
+<p class="caption">sphinxjp theme list</p>
+</div>
+</section>
+<section>
+<p class="first">install</p>
+<pre>
+<code data-trim contenteditable>$ pip install sphinxjp.themes.bizstyle</code></pre>
+<p>conf.py</p>
+<pre class="last">
+<code data-trim contenteditable>extensions += ['sphinxjp.themecore']
+html_theme = 'bizstyle'</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/bizstyle_theme.png" src="_images/bizstyle_theme.png" />
+<p class="caption">sphinxjp.themes.bizstyle</p>
+</div>
+</section>
+<section>
+<h2>HTMLテーマの中身</h2>
+<pre class="first">
+<code data-trim contenteditable>default/
+   ├── layout.html
+   ├── static
+   │   ├── default.css_t
+   │   └── sidebar.js_t
+   └── theme.conf</code></pre>
+<p class="last">defaultテーマのファイルレイアウト</p>
+</section>
+<section>
+<h2>theme.conf</h2>
+<pre class="first last">
+<code data-trim contenteditable>[theme]
+inherit = basic          # <= どのテーマを継承するか
+stylesheet = default.css # <= どのスタイルシートを利用するか
+pygments_style = sphinx  # <= ソースコードハイライトのスタイル
+
+[options]                # <= テーマ固有のオプション
+rightsidebar = false
+stickysidebar = false
+collapsiblesidebar = false
+externalrefs = false
+.
+.</code></pre>
+</section>
+<section>
+<h2>layout.html</h2>
+<pre class="first">
+<code data-trim contenteditable>{#
+    default/layout.html
+    ~~~~~~~~~~~~~~~~~~~
+
+    Sphinx layout template for the default theme.
+
+    :copyright: Copyright 2007-2013 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+#}
+{%- extends "basic/layout.html" %}
+
+{% if theme_collapsiblesidebar|tobool %}
+{% set script_files = script_files + ['_static/sidebar.js'] %}
+{% endif %}</code></pre>
+<p class="last">テンプレートにはJinja2を採用</p>
+</section>
+<section>
+<h2>layout.html</h2>
+<p class="first">theme.conf</p>
+<pre>
+<code data-trim contenteditable>collapsiblesidebar = true</code></pre>
+<p>layout.html</p>
+<pre>
+<code data-trim contenteditable>{% if theme_collapsiblesidebar|tobool %} # => True</code></pre>
+<p>conf.py</p>
+<pre>
+<code data-trim contenteditable>html_theme_options = {
+  'collapsiblesidebar': True,
+}</code></pre>
+<p class="last">利用者が任意に変更できるオプションを追加できる</p>
+</section>
+<section>
+<h2>default.css_t</h2>
+<pre class="first">
+<code data-trim contenteditable>body {
+    font-family: {{ theme_bodyfont }};  <= option
+    font-size: 100%;
+    background-color: {{ theme_footerbgcolor }}; <= option
+    color: #000;
+    margin: 0;
+    padding: 0;
+}</code></pre>
+<p class="last">_tを付ける事でHTML同様Jinja2経由で処理される。</p>
+</section>
+<section>
+<h2>中身と拡張の話</h2>
+<ul class="first last simple">
+<li>拡張とは</li>
+<li>ビルドの流れ</li>
+<li>Directive</li>
+<li>Role</li>
+<li>Builder</li>
+</ul>
+</section>
+<section>
+<h2>拡張とは</h2>
+<ul class="first last simple">
+<li>Sphinxの機能を拡張する事ができる</li>
+<li>Sphinxに同梱 or 外部ライブラリ</li>
+<li>sphinx.ext〜 , sphinxcontrib〜 とか付いてるヤツ</li>
+<li><a class="reference external" href="https://bitbucket.org/birkenfeld/sphinx-contrib/">https://bitbucket.org/birkenfeld/sphinx-contrib/</a></li>
+</ul>
+</section>
+<section>
+<h2>sphinx.ext.todo</h2>
+<p class="first">conf.py</p>
+<pre>
+<code data-trim contenteditable># 拡張を宣言する
+extensions += ['sphinx.ext.todo']
+
+# TODOを表示させる(デフォはFalse)
+todo_include_todos = True</code></pre>
+<p>index.rst</p>
+<pre class="last">
+<code data-trim contenteditable>.. todo::
+
+   あとで本気だす！
+
+.. todo::
+
+   俺はあとでやるぞジョジョー!
+
+.. todolist::</code></pre>
+</section>
+<section>
+<p class="first">todo</p>
+<div class="figure">
+<img alt="_images/todo.png" src="_images/todo.png" />
+</div>
+<p>todolist</p>
+<div class="last figure">
+<img alt="_images/todolist.png" src="_images/todolist.png" />
+</div>
+</section>
+<section>
+<h2>ビルドの流れ</h2>
+<div class="first last figure">
+<img alt="_images/build_flow.png" src="_images/build_flow.png" />
+<p class="caption"><a class="reference external" href="http://sphinx-users.jp/doc11/ext/tutorial.html">http://sphinx-users.jp/doc11/ext/tutorial.html</a></p>
+</div>
+</section>
+<section>
+<div class="first figure">
+<img alt="_images/build_flow_graph.png" src="_images/build_flow_graph.png" />
+</div>
+<ul class="last simple">
+<li>フェーズ1の段階でDocツリーが生成</li>
+<li>DocツリーはNodeという単位で構成</li>
+<li>Docツリーは _build/doctrees以下に保存</li>
+<li>フェーズ3で出力可能なNodeに変換</li>
+<li>フェーズ4でBuilderに併せて出力</li>
+</ul>
+</section>
+<section>
+<h2>Directive</h2>
+<ul class="first simple">
+<li>reSTで特別な意味を持つ文章のブロックを表現</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>.. ディレクティブ名:: 引数 ...
+   :オプション: 値
+
+   ディレクティブのコンテンツ</code></pre>
+</section>
+<section data-background="_static/image/background.png">
+<h2>sphinxjp.themes.revealjs</h2>
+<p class="first">ブロック内の文章</p>
+<pre class="last">
+<code data-trim contenteditable>.. revealjs:: sphinxjp.themes.revealjs
+   :data-background: _static/image/background.png
+
+   ブロック内の文章</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/revealjs_html.png" src="_images/revealjs_html.png" />
+</div>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>class revealjs(nodes.General, nodes.Element): pass
+
+class RevealjsDirective(Directive):
+    """ Reveal.JS slide entry  """
+
+    node_class = revealjs
+
+    def run(self):
+        """ build revealjs node """
+
+        # 省略〜
+
+        node = self.node_class(text, **self.options)
+        return [node]</code></pre>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>def visit_revealjs(self, node):
+    """ build start tag for revealjs """
+
+    # 省略 〜
+
+    self.body.append(self.starttag(node, 'section', **section_attr))
+
+def depart_revealjs(self, node=None):
+    """ build end tag for revealjs """
+    self.body.append('＜/section＞\n')
+
+def setup(app):
+    """Initialize """
+    app.info('Initializing RevealJS theme directives')
+    app.add_node(revealjs, html=(visit_revealjs, depart_revealjs))</code></pre>
+</section>
+<section>
+<h2>Role</h2>
+<ul class="first simple">
+<li>reSのマークアップの要素で、テキスト中にマーキングを行うことができます。</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>:ロール名:`コンテンツ`</code></pre>
+</section>
+<section>
+<h2>PEP Role</h2>
+<pre class="first">
+<code data-trim contenteditable>Pythonのコーディングスタイルは :pep:`8` に従いましょう</code></pre>
+<pre class="last">
+<code data-trim contenteditable>Pythonのコーディングスタイルは
+<span class="target" id="index-0"></span>
+<a class="pep reference external" href="http://www.python.org/dev/peps/pep-0008">
+ <strong>PEP 8</strong>
+</a>
+に従いましょう</code></pre>
+</section>
+<section>
+<h2>Roleを使う時の注意</h2>
+<p class="first">Roleを使う時は両端にスペースを必須</p>
+<pre class="last">
+<code data-trim contenteditable>× Pythonのコーディングスタイルは:pep:`8`に従いましょう
+○ Pythonのコーディングスタイルは :pep:`8` に従いましょう</code></pre>
+</section>
+<section>
+<h2>Roleも拡張可能</h2>
+<ul class="first last simple">
+<li>virtaulenvwrapperの作者</li>
+<li><a class="reference external" href="http://doughellmann.com/2010/05/defining-custom-roles-in-sphinx.html">http://doughellmann.com/2010/05/defining-custom-roles-in-sphinx.html</a></li>
+</ul>
+</section>
+<section>
+<h2>Builder</h2>
+<ul class="first last simple">
+<li>Docツリーを最終的なアウトプットとして吐き出す</li>
+<li>Builder自体でも独自用意する事ができる</li>
+<li><a class="reference external" href="http://www.freia.jp/taka/blog/rst2textile-0.1.0-released/index.html">http://www.freia.jp/taka/blog/rst2textile-0.1.0-released/index.html</a></li>
+<li><a class="reference external" href="https://github.com/nishio/rst2inao">https://github.com/nishio/rst2inao</a></li>
+</ul>
+</section>
+<section>
+<h2>ドキュメント作成が捗る</h2>
+<ul class="first last simple">
+<li>自動ビルド</li>
+<li>APIリファレンスを作る</li>
+<li>DB定義をreST化する</li>
+<li>良く使う拡張</li>
+</ul>
+</section>
+<section>
+<h2>自動ビルド(watchdog)</h2>
+<ul class="first last simple">
+<li>毎回ビルドするのが面倒</li>
+<li>ファイルを更新したら勝手にビルドしておいて欲しい</li>
+</ul>
+</section>
+<section>
+<h2>watchdog</h2>
+<p class="first">install</p>
+<pre>
+<code data-trim contenteditable>$ pip install watchdog</code></pre>
+<p>watchmedo</p>
+<pre class="last">
+<code data-trim contenteditable>$ watchmedo shell-command --recursive --patterns="*.rst" --wait --command='make html'</code></pre>
+</section>
+<section>
+<h2>自動ビルド(jenkins)</h2>
+<ul class="first simple">
+<li>pythonアプリのドキュメントを書く事を想定</li>
+<li>docsディレクトリにSphinxドキュメントを用意</li>
+<li>Mecurialでソース管理</li>
+<li>docs用のブランチを切っておく</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>project
+ ├── apps
+ ├── docs
+ │   ├── Makefile
+ │   ├── _build
+ │   ├── _static
+ │   ├── _templates
+ │   ├── conf.py
+ │   ├── index.rst
+ │   └── make.bat
+ ├── manage.py
+ ├── polls
+ └── requirementxs.tt</code></pre>
+</section>
+<section>
+<h2>リポジトリの設定</h2>
+<ul class="first simple">
+<li>docsブランチを指定</li>
+</ul>
+<div class="last figure">
+<img alt="_images/jenkins1.png" src="_images/jenkins1.png" />
+</div>
+</section>
+<section>
+<h2>ビルドの設定</h2>
+<ul class="first simple">
+<li>初回はvirtualenvを作成</li>
+<li>安全のため make clean</li>
+</ul>
+<div class="last figure">
+<img alt="_images/jenkins2.png" src="_images/jenkins2.png" />
+</div>
+</section>
+<section>
+<ul class="first last simple">
+<li>workspaceにビルドしたドキュメントが生成</li>
+<li>シェルの中にWeb領域にコピーするのを追加しても良い</li>
+<li>pushすれば勝手にビルドしてくれるの嬉しい</li>
+<li>いつでも最新のドキュメントが共有できる</li>
+</ul>
+</section>
+<section>
+<h2>Read the Docs</h2>
+<div class="first last figure">
+<img alt="_images/readthedocs.png" src="_images/readthedocs.png" />
+</div>
+</section>
+<section>
+<h2>APIリファレンスを作る</h2>
+<ul class="first simple">
+<li>sphinx.ext.autodocを利用する</li>
+<li>sphinx-apidoc を利用して自動で生成</li>
+</ul>
+<p>conf.py</p>
+<pre class="last">
+<code data-trim contenteditable>extensions += ['sphinx.ext.autodoc']</code></pre>
+</section>
+<section>
+<h2>autodoc</h2>
+<p class="first">polls/models.py</p>
+<pre class="last">
+<code data-trim contenteditable>from django.db import models
+
+class Poll(models.Model):
+    question = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+
+class Choice(models.Model):
+    poll = models.ForeignKey(Poll)
+    choice = models.CharField(max_length=200)
+    votes = models.IntegerField()</code></pre>
+</section>
+<section>
+<h2>autodoc</h2>
+<pre class="first last">
+<code data-trim contenteditable>.. automodule:: polls.models
+    :members:
+    :undoc-members:
+    :show-inheritance:</code></pre>
+</section>
+<section>
+<h2>sphinx-apidoc</h2>
+<ul class="first simple">
+<li>とはいえreSTかくのもダルい</li>
+<li>pythonスクリプトからreSTを自動生成</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>$ sphinx-apidoc -f -T -o docs/api polls</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/autodoc.png" src="_images/autodoc.png" />
+</div>
+</section>
+<section>
+<h2>DB定義をreST化する</h2>
+<ul class="first simple">
+<li>schema2rstを利用する</li>
+<li>DBからテーブル情報を取得してreSTファイル化</li>
+<li>単なるreSTファイルなのでSphinxでビルド可能</li>
+<li>MySQLのみ対応</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>$ pip install schema2rst</code></pre>
+</section>
+<section>
+<h2>設定ファイル作る</h2>
+<p class="first">config.yaml</p>
+<pre class="last">
+<code data-trim contenteditable>db: 'polls'
+host: '127.0.0.1'
+user: 'user'
+passwd: 'password'
+port: '3306'</code></pre>
+</section>
+<section>
+<h2>コマンド 実行</h2>
+<ul class="first simple">
+<li>SQLAlchemyを利用して接続</li>
+<li>configのDBからテーブル情報取得</li>
+</ul>
+<pre class="last">
+<code data-trim contenteditable>$ schema2rst config.yaml > docs/schema.rst</code></pre>
+</section>
+<section>
+<pre class="first last">
+<code data-trim contenteditable>polls_poll
+----------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Fullname
+     - Name
+     - Type
+     - NOT NULL
+     - PKey
+     - Default
+     - Comment
+   * - id
+     - id
+     - int(11)
+     - False</code></pre>
+</section>
+<section>
+<div class="first last figure">
+<img alt="_images/schema2rst.png" src="_images/schema2rst.png" />
+</div>
+</section>
+<section>
+<h2>良く使う拡張</h2>
+<ul class="first simple">
+<li><a class="reference external" href="http://blockdiag.com/ja/blockdiag/sphinxcontrib.html">sphinxcontrib-blockdiag</a></li>
+</ul>
+<small>
+ブロック図をかける素敵拡張。seqdiag, nwdiag, actdiag</small>
+<ul class="simple">
+<li><a class="reference external" href="http://pythonhosted.org/sphinxcontrib-httpdomain/">sphinxcontrib-httpdomain</a></li>
+</ul>
+<small>
+HTTPインターフェースを定義できる。WebAPIの仕様書く時に便利</small>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.python.org/pypi/sphinxcontrib-issuetracker/0.7.2">sphinxcontrib-issuetracker</a></li>
+</ul>
+<small class="last">
+Github, Bitbucket等のissue trackerにリンクできる</small>
+</section>
+<section>
+<h2>参考(Web)</h2>
+<ul class="first last simple">
+<li><a class="reference external" href="http://sphinx-users.jp/">Sphinx-Users.jp</a><ul>
+<li><a class="reference external" href="http://sphinx-users.jp/reverse-dict/index.html">逆引き辞典</a></li>
+<li><a class="reference external" href="http://sphinx-users.jp/articles/index.html">ドキュメント資料</a></li>
+<li><a class="reference external" href="http://sphinx-users.jp/example.html">Sphinxを使用しているサイト</a></li>
+<li><a class="reference external" href="http://sphinx-users.jp/templates.html">Sphinxテンプレート</a></li>
+<li><a class="reference external" href="http://sphinx-users.jp/event/20101203_jus_benkyoukai/index.html">ドキュメント作りたくなってしまう魔法のツール</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="http://connpass.com/event/1441/">Sphinx Advent Calendar 2012</a></li>
+<li><a class="reference external" href="http://atnd.org/events/22450">Sphinx &amp; blockdiag Advent Calendar(全部俺)</a></li>
+<li><a class="reference external" href="http://sphinx-users.jp/event/20130223_sphinxconjp/index.html">SphinxCon JP 2013 Spring (2013/2/23)</a></li>
+<li><a class="reference external" href="http://sphinx-users.jp/event/20130223_sphinxconjp/index.html">SphinxCon JP 2012 (2012/9/16)</a></li>
+</ul>
+</section>
+<section>
+<h2>参考(書籍)</h2>
+<ul class="first last simple">
+<li>エキスパートPython<ul>
+<li>第10章 プロジェクトのドキュメント作成</li>
+<li>P264 〜</li>
+</ul>
+</li>
+<li>プロフェッショナルPython<ul>
+<li>Chapter 04 ドキュメント基盤を整える</li>
+<li>P62 〜</li>
+</ul>
+</li>
+<li>パーフェクトPython<ul>
+<li>19章 19-3 ドキュメンテーション(Sphinx)</li>
+<li>P393 〜</li>
+</ul>
+</li>
+</ul>
+</section>
+<section>
+<h2>まとめ</h2>
+<ul class="first last simple">
+<li>Sphinx概要</li>
+<li>HTMLテーマを変える</li>
+<li>中身と拡張の話</li>
+<li>ドキュメント作成が捗る</li>
+<li>参考</li>
+</ul>
+</section>
+<section>
+<h2>今日発表しなかった事</h2>
+<ul class="first last simple">
+<li>Sphinxでのドキュメントの書き方(おい)</li>
+<li>ReStructuredTextの詳しい書き方(おい)</li>
+<li>各種フォーマットでのビルドの仕方(おい)</li>
+</ul>
+</section>
+<section data-background="_static/image/anzai.png">
+</section>
+<section>
+<p class="first">今日発売! ＼(^o^)／</p>
+<div class="last figure">
+<img alt="_images/sphinx_start.png" src="_images/sphinx_start.png" />
+</div>
+</section>
+<section data-background="_static/image/mikachan.png">
+</section>
+<section data-background="_static/image/powerslave.png">
+<div class="first last"><h3 style="color: #fff; background-color: #000; filter:alpha(opacity=60); -moz-opacity:0.60; -khtml-opacity: 0.60; opacity:0.60;">
+ <br />
+ ご清聴ありがとうございました。<br />m(_ _)m
+ <br />
+ <br />
+</h3></div></section>
+</div>
+
+
+      </div>
+    </div>
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="_static/lib/js/head.min.js"></script>
+<script src="_static/js/reveal.js"></script>
+    <script>
+
+      // change DOM for reveal.js
+      $("div.section h1").remove();
+      var content = $("div.section").html();
+      $("div.section").remove();
+      $("div.slides").html(content);
+
+      Reveal.initialize({
+        width: 960,
+        height: 700,
+
+        margin: 0.1,
+
+        minScale: 0.2,
+        maxScale: 1.0,
+
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        keyboard : true,
+        overview: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        fragments: true,
+
+        autoSlide: 0,
+        mouseWheel: false,
+        rollingLinks: true,
+        previewLinks: false,
+
+        transitionSpeed: "default",
+        backgroundTransition: "default",
+
+        theme: Reveal.getQueryHash().theme || "default", // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || "linear", // default/cube/page/concave/zoom/linear/fade/none
+
+        dependencies: [
+        { src: '_static/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: '_static/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: '_static/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: '_static/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: '_static/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: '_static/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+  </body>
+</html>
