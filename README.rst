@@ -1,6 +1,6 @@
 PyCon APAC 2013 の 発表資料 です
 
-.. figure:: https://tell-k.github.io/pyconapac2013/images/ogp.png
+.. figure:: https://tell-k.github.io/pyconapac2013/_static/img/ogp.png
    :width: 50%
 
 * Sphinx と 僕 〜 Sphinxと戯れたいあなたに送る入門編 〜
